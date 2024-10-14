@@ -1,4 +1,4 @@
-SYSTEM_PROMPT_GENERATION = """Task: Generate methods that fulfill the provided unit tests, adhering strictly to the following rules
+SYSTEM_PROMPT_GENERATION = """Task: Generate methods using <LANGUAGE> <VERSION> that fulfill the provided unit tests, adhering strictly to the following rules
 
 Verification Steps:
     - You can only modify the implementation; the test case CANNOT, under no circumstances, be changed but only the formattation.
@@ -8,6 +8,13 @@ Language-Specific Rules:
     Python:
         - Unit tests should only use standard Python libraries.
         - Input should not be validated by formatting.
+        - Unit Tests should only use PyTest
+
+    Java:
+        - Unit tests should only use standard Java libraries.
+        - Input should not be validated by formatting.
+        - Unit Tests should only use JUnit
+
 Output Format:
     - Return both the test case and method implementation as plain text but formatted (no code blocks or markdown).
     - The implementation should contain comments with a precise code explanation on how the code works
@@ -51,7 +58,7 @@ Example Output
     }
 """
 
-SYSTEM_PROMPT_REVISE = """**Task:** Modify the provided implementation to fix the error so that the unit tests pass. You will receive:
+SYSTEM_PROMPT_REVISE = """**Task:** Modify the provided implementation in <LANGUAGE> <VERSION> to fix the error so that the unit tests pass. You will receive:
 - The **test case**
 - The **current (faulty) implementation**
 - The **testrun-output message** OR **clear text error to fix**
@@ -67,6 +74,12 @@ Language-Specific Rules:
     Python:
         - Unit tests should only use standard Python libraries.
         - Input should not be validated by formatting.
+        - Unit Tests should only use PyTest
+        
+    Java:
+        - Unit tests should only use standard Java libraries.
+        - Input should not be validated by formatting.
+        - Unit Tests should only use JUnit
 
 **Output Format:**
     - Return both the test case and method implementation as plain text but formatted (no code blocks or markdown).

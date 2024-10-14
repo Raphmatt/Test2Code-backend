@@ -76,6 +76,7 @@ class CodeExecutionLogic:
                     service = get_container_service(language, version)
                     result = service.run_code_in_container(implementations, testcases_str)
 
+                    print(result)
                     if result.get("test_results").get("summary").get("passed") == result.get("test_results").get("summary").get("total"):
                         return llm_response_obj
                     else:

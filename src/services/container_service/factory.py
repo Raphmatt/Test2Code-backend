@@ -1,10 +1,12 @@
 # factory.py
 
 from .base import ContainerService
+from .java_service import JavaContainerService
 from .python_service import PythonContainerService
 
 SERVICE_CLASSES = {
     'python': PythonContainerService,
+    'java': JavaContainerService,
     # Add more languages here in the future
 }
 
